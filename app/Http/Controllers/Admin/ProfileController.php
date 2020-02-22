@@ -8,9 +8,9 @@ use App\Http\Controllers\Controller;
 class ProfileController extends Controller
 {
     //
-}
 
-ublic function add()
+
+    public function add()
     {
         return view('admin.profile.create');
     }
@@ -29,3 +29,4 @@ ublic function add()
     {
         return redirect('admin/profile/edit');
     }
+}
