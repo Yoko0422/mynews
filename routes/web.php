@@ -20,6 +20,9 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('news/create', 'Admin\NewsController@add')->middleware('auth');
     Route::get('profile/create', 'Admin\ProfileController@add')->middleware('auth');
     Route::get('profile/edit', 'Admin\ProfileController@edit')->middleware('auth');
+    Route::post('news/create', 'Admin\NewsController@create');
+    Route::post('profile/create', 'Admin\ProfileController@create');
+    
 });
 
 
@@ -28,8 +31,6 @@ Route::get('XXX', 'AAAController@bbb');
 
 
 //課題18-4:admin/profile/createにアクセスしたらProfileControllerのadd Action に、admin/profile/editにアクセスしたらProfileControllerのedit Action に割り当てる
-
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
