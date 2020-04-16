@@ -7,10 +7,9 @@ use App\Http\Controllers\Controller;
 
 class ProfileController extends Controller
 {
-    //
-
-
-    public function add()
+    
+// 「PHP/Laravel 08 ControllerとRoutingの関係について理解しよう」課題5で追記
+ public function add()
     {
         return view('admin.profile.create');
     }

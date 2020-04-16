@@ -41,16 +41,12 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <!-- Left Side Of Navbar -->
                         <ul class="navbar-nav mr-auto">
-
+                            
                         </ul>
 
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ml-auto">
-                        </ul>
-                        <!-- Right Side Of Navbar -->
-                        <ul class="navbar-nav ml-auto">
-
-                        {{-- 以下を追記 --}}
+                            {{-- PHP/Laravel 12 ユーザー認証を実装する --}}
                         <!-- Authentication Links -->
                         {{-- ログインしていなかったらログイン画面へのリンクを表示 --}}
                         @guest
@@ -75,18 +71,17 @@
                                 </div>
                             </li>
                             @endguest
-                            {{-- 以上までを追記 --}}
+                            {{-- 以上までを追記PHP/Laravel 12 ユーザー認証を実装する --}}
                         </ul>
-
                     </div>
                 </div>
             </nav>
             {{-- ここまでナビゲーションバー --}}
+
             <main class="py-4">
                 {{-- コンテンツをここに入れるため、@yieldで空けておきます。 --}}
                 @yield('content')
             </main>
         </div>
-
     </body>
 </html>

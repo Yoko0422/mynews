@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html>
     <head>
         <meta charset="utf-8">
-        <title>Edit Blade PHP</title>
-     </head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>MyProfile</title>
+    </head>
     <body>
-       <H1>Edit.blade.php</H1>
+        <h1>Myプロフィール編集画面</h1>
     </body>
 </html>

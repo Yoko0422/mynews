@@ -12,6 +12,7 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css')
-    .sass('resources/sass/admin.scss', 'public/css')
-    .sass('resources/sass/profile.scss', 'public/css');
+   .sass('resources/sass/app.scss', 'public/css')
+   .sass('resources/sass/admin.scss', 'public/css')
+   //PHP/Laravel 11 Bladeテンプレートの継承とLaravel Mixの使い方を活用してみよう 課題6
+   .sass('resources/sass/profile.scss', 'public/css'); 
