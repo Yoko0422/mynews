@@ -28,9 +28,9 @@
                         <label class="col-md-2">性別</label>
                         <div class="col-md-10">
                             <select name="gender">
-                                <option value="saikou">M</option>
-                                <option value="botiboti">F</option>
-                                <option value="hutuu">none</option>
+                                <option value="Male">Male</option>
+                                <option value="femele">Female</option>
+                                <option value="none">none</option>
                             {{ old('gender') }}</select>
                         </div>
                     </div>
