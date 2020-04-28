@@ -1,5 +1,5 @@
 {{-- layouts/profile.blade.phpを読み込む --}}
-@extends('layouts.admin')
+@extends('layouts.profile')
 @section('title', 'Myプロフィール')
 
 @section('content')
@@ -17,6 +17,7 @@
                             @endforeach
                         </ul>
                     @endif
+                    
                     <div class="form-group row">
                         <label class="col-md-2">名前</label>
                         <div class="col-md-10">

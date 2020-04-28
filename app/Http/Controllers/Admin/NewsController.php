@@ -79,10 +79,32 @@ class NewsController extends Controller
       // 送信されてきたフォームデータを格納する
       $news_form = $request->all();
       unset($news_form['_token']);
+      // フォームから画像が送信されてきたら、保存して、$news->image_path に画像のパスを保存する
+      if (isset($form['image'])) {
+        $path = $request->file('image')->store('public/image');
+        $news->image_path = basename($path);
+      unset($news_form['image']);
+      } elseif (isset($request->remove)) {
+        $news->image_path = null;
+        unset($news_form['remove']);
+      }
+      unset($news_form['_token']);
 
       // 該当するデータを上書きして保存する
       $news->fill($news_form)->save();
 
       return redirect('admin/news');
   }
+  
+// PHP/Laravel 16 投稿したニュースを更新/削除しよう　　
+  public function delete(Request $request)
+  {
+      // 該当するNews Modelを取得
+      $news = News::find($request->id);
+      // 削除する
+      $news->delete();
+      return redirect('admin/news/');
+  }  
+
+
 }
