@@ -7,6 +7,11 @@ use App\Http\Controllers\Controller;
 // 以下を追記することでProfile Modelが扱えるようになる。PHP/Laravel 14 投稿データを保存しよう
 use App\Profile;
 
+// PHP17課題以下を追記
+use App\Phistory;
+use Carbon\Carbon;
+
+
 class ProfileController extends Controller
 {
  public function add()
@@ -65,7 +70,7 @@ class ProfileController extends Controller
       // Validationをかける
       $this->validate($request, Profile::$rules);
       // Profile Modelからデータを取得する
-      $news = Profile::find($request->id);
+      $profile = Profile::find($request->id);
       // 送信されてきたフォームデータを格納する
       $profile_form = $request->all();
       unset($profile_form['_token']);
@@ -73,7 +78,13 @@ class ProfileController extends Controller
       // 該当するデータを上書きして保存する
       $profile->fill($profile_form)->save();
 
-      return redirect('admin/profile');
+       // PHP17課題以下を追記
+        $phistory = new Phistory;
+        $phistory->profile_id = $profile->id;
+        $phistory->edited_at = Carbon::now();
+        $phistory->save();
+
+      return redirect('admin/profile/');
   }
   
 // PHP/Laravel 16 投稿したニュースを更新/削除しよう　　

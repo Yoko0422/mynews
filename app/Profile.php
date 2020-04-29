@@ -14,4 +14,13 @@ class Profile extends Model
         'hobby' => 'required',
         'introduction' => 'required',
     );
+    
+    // PHP17課題
+    // Profileモデルに関連付けを行う
+    public function phistories()
+    {
+      return $this->hasMany('App\Phistory');
+
+    }
+
 }

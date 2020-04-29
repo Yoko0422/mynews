@@ -37,7 +37,7 @@
                     <div class="form-group row">
                         <label class="col-md-2" for="hobby">趣味</label>
                         <div class="col-md-10">
-                            <textarea class="form-control" name="hpbby" rows="5">{{ $profile_form->hobby }}</textarea>
+                            <textarea class="form-control" name="hobby" rows="5">{{ $profile_form->hobby }}</textarea>
                         </div>
                     </div>
                     
@@ -55,8 +55,20 @@
                             <input type="submit" class="btn btn-primary" value="更新">
                         </div>
                     </div>
-                    
-                </form>
+                    </form>
+               {{-- 以下を追記　--}}
+                <div class="row mt-5">
+                    <div class="col-md-4 mx-auto">
+                        <h2>編集履歴</h2>
+                        <ul class="list-group">
+                            @if ($profile_form->phistories != NULL)
+                                @foreach ($profile_form->phistories as $phistory)
+                                    <li class="list-group-item">{{ $phistory->edited_at }}</li>
+                                @endforeach
+                            @endif
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
