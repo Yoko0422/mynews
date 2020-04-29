@@ -29,6 +29,7 @@
                         <label class="col-md-2">性別</label>
                         <div class="col-md-10">
                             <select name="gender">
+                                <option>-Select-</option>
                                 <option value="Male">Male</option>
                                 <option value="femele">Female</option>
                                 <option value="none">none</option>

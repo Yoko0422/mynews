@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::group(['prefix' => 'admin'], function() {
     Route::get('news', 'Admin\NewsController@index')->middleware('auth'); // PHP/Laravel 15 投稿したニュース一覧を表示しよう
+    Route::get('profile', 'Admin\ProfileController@index')->middleware('auth'); // PHP/Laravel 15 投稿したニュース一覧を表示しよう
     Route::get('news/create', 'Admin\NewsController@add')->middleware('auth');
     Route::get('profile/create', 'Admin\ProfileController@add')->middleware('auth');
     Route::get('news/edit', 'Admin\NewsController@edit')->middleware('auth'); // PHP/Laravel 16 投稿したニュースを更新/削除しよう
