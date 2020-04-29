@@ -30,7 +30,7 @@ class ProfileController extends Controller
       $profile->fill($form);
       $profile->save();
 
-      return redirect('admin/profile/create');
+      return redirect('admin/profile/');
   }
 
 // PHP/Laravel 15 投稿したニュース一覧を表示しよう

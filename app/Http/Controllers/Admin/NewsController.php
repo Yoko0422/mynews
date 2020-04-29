@@ -4,8 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-// 以下を追記することでNews Modelが扱えるようになる。PHP/Laravel 14 投稿データを保存しよう
+
+// PHP14以下を追記することでNews Modelが扱えるようになる
 use App\News;
+
+// PHP17以下を追記
+use App\History;
+use Carbon\Carbon;
 
 class NewsController extends Controller
 {
@@ -40,7 +45,7 @@ class NewsController extends Controller
       $news->fill($form);
       $news->save();
 
-      return redirect('admin/news/create');
+      return redirect('admin/news/');
   }
 
 // PHP/Laravel 15 投稿したニュース一覧を表示しよう
@@ -71,30 +76,32 @@ class NewsController extends Controller
 
 
   public function update(Request $request)
-  {
-      // Validationをかける
-      $this->validate($request, News::$rules);
-      // News Modelからデータを取得する
-      $news = News::find($request->id);
-      // 送信されてきたフォームデータを格納する
-      $news_form = $request->all();
-      unset($news_form['_token']);
-      // フォームから画像が送信されてきたら、保存して、$news->image_path に画像のパスを保存する
-      if (isset($form['image'])) {
-        $path = $request->file('image')->store('public/image');
-        $news->image_path = basename($path);
-      unset($news_form['image']);
-      } elseif (isset($request->remove)) {
-        $news->image_path = null;
+    {
+        $this->validate($request, News::$rules);
+        $news = News::find($request->id);
+        $news_form = $request->all();
+        if ($request->remove == 'true') {
+            $news_form['image_path'] = null;
+        } elseif ($request->file('image')) {
+            $path = $request->file('image')->store('public/image');
+            $news_form['image_path'] = basename($path);
+        } else {
+            $news_form['image_path'] = $news->image_path;
+        }
+
+        unset($news_form['_token']);
+        unset($news_form['image']);
         unset($news_form['remove']);
-      }
-      unset($news_form['_token']);
+        $news->fill($news_form)->save();
 
-      // 該当するデータを上書きして保存する
-      $news->fill($news_form)->save();
+        // PHP17以下を追記
+        $history = new History;
+        $history->news_id = $news->id;
+        $history->edited_at = Carbon::now();
+        $history->save();
 
-      return redirect('admin/news');
-  }
+        return redirect('admin/news/');
+    }
   
 // PHP/Laravel 16 投稿したニュースを更新/削除しよう　　
   public function delete(Request $request)
