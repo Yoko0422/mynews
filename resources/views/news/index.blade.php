@@ -1,7 +1,12 @@
 @extends('layouts.front')
+@section('title', 'ニュース一覧')
 
 @section('content')
     <div class="container">
+        <div class="row">
+            <h2>News</h2>
+            <p>投稿されたニュース一覧</p>
+        </div>
         <hr color="#c0c0c0">
         @if (!is_null($headline))
             <div class="row">
@@ -15,7 +20,7 @@
                                     @endif
                                 </div>
                                 <div class="title p-2">
-                                    <h1>{{ str_limit($headline->title, 70) }}</h1>
+                                    <strong>{{ str_limit($headline->title, 70) }}</strong>
                                 </div>
                             </div>
                         </div>
