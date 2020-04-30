@@ -32,12 +32,13 @@ Route::group(['prefix' => 'admin'], function() {
     Route::post('profile/edit', 'Admin\ProfileController@update')->middleware('auth'); // PHP/Laravel 16 投稿したニュースを更新/削除しよう課題3
 });
 
-
+// PHP18
+Route::get('/', 'NewsController@index');
+Route::get('/profile', 'ProfileController@index');
 
 //課題18-3 http://XXXXXX.jp/XXX というアクセスが来たときに、AAAControllerのbbbというActionに渡すRoutingの設定
-Route::get('XXX', 'AAAController@bbb');
-
+// Route::get('XXX', 'AAAController@bbb');
 
 //課題18-4:admin/profile/createにアクセスしたらProfileControllerのadd Action に、admin/profile/editにアクセスしたらProfileControllerのedit Action に割り当てる
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
